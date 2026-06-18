@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+
+const shots = [
+  { img: '/assets/shots/dashboard.png', cap: 'Komuta Merkezi — günlük ciro, teknisyen yükü, kritik stok ve güvenlik radarı tek ekranda', url: 'arcteknik.app/panel', wide: true },
+  { img: '/assets/shots/restoran-masa.png', cap: 'ArcTeknik Şef — dokunmatik masa planı, canlı masa süresi ve anlık adisyon tutarı', url: 'arcteknik.app/restoran', wide: true, chef: true },
+  { img: '/assets/shots/kasa.png', cap: 'Kasa & Finans — gelir-gider, kapora, otomatik net kâr', url: 'arcteknik.app/kasa' },
+  { img: '/assets/shots/stok.png', cap: 'Stok & Depo — çoklu barkod, kategori/marka, Excel import', url: 'arcteknik.app/stok' },
+  { img: '/assets/shots/analiz.png', cap: 'İstatistik & Analiz — marka/arıza dağılımı, teknisyen performansı', url: 'arcteknik.app/analiz' },
+  { img: '/assets/shots/restoran-mutfak.png', cap: 'Mutfak Ekranı (KDS) — geciken sipariş alarmı, çoklu yazıcı', url: 'arcteknik.app/restoran/mutfak', chef: true },
+];
+---
+<Base title="Ekran Görüntüleri — ArcTeknik" description="ArcTeknik ve ArcTeknik Şef panellerinden gerçek ekran görüntüleri. Sade, hızlı ve dokunmatik uyumlu arayüz.">
+
+  <section class="pagehero">
+    <div class="container">
+      <p class="crumb reveal"><a href="/">Ana Sayfa</a> · Ekranlar</p>
+      <span class="eyebrow reveal"><span class="dot"></span> Gerçek arayüz</span>
+      <h1 class="reveal">Mockup değil, <span class="grad">gerçek uygulama</span></h1>
+      <p class="reveal">ArcTeknik panellerinden gerçek görüntüler. Sade, hızlı ve dokunmatik uyumlu.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:34px">
+    <div class="container">
+      <div class="shots">
+        {shots.map((s) => (
+          <figure class={'shot reveal' + (s.wide ? ' shot--wide' : '')} data-reveal="scale">
+            <div class={'device' + (s.chef ? ' device--chef' : '')}>
+              <div class="device__bar"><i></i><i></i><i></i><span>{s.url}</span></div>
+              <img src={s.img} alt={s.cap} loading="lazy" />
+            </div>
+            <figcaption>{s.cap}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container cta__inner reveal">
+      <h2>Canlı demoda <span class="grad">kendiniz deneyin</span></h2>
+      <p>Ekran görüntüleri güzel; canlı kullanmak daha iyi. Ücretsiz demo planlayalım.</p>
+      <div class="hero__actions" style="justify-content:center"><a href="/iletisim" class="btn btn--primary btn--lg">Demo Talep Et</a></div>
+    </div>
+  </section>
+
+</Base>

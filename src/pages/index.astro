@@ -1,0 +1,186 @@
+---
+import Base from '../layouts/Base.astro';
+
+const showcase = [
+  { n: '01', t: 'Komuta Merkezi', img: '/assets/shots/dashboard.png', url: 'arcteknik.app/panel',
+    p: 'Günlük ciro, teknisyen yükü, kritik stok ve güvenlik radarı tek ekranda. İşletmenizin nabzını anında tutun.',
+    li: ['Canlı ciro & net kâr', 'Teknisyen iş yükü', 'Kritik stok uyarıları'] },
+  { n: '02', t: 'Kasa & Net Kâr', img: '/assets/shots/kasa.png', url: 'arcteknik.app/kasa',
+    p: 'Gelir-gider, kapora ve aylık filtre. Parça maliyetleri düşülerek gerçek net kâr otomatik hesaplanır.',
+    li: ['Otomatik net kâr', 'Kısmi tahsilat & kapora', 'Açık hesap / cari takibi'] },
+  { n: '03', t: 'Stok & Depo', img: '/assets/shots/stok.png', url: 'arcteknik.app/stok',
+    p: 'Çoklu barkod, kategori/marka, Excel içe aktarım. Servise düşen parça stoğu ACID güvenliğiyle azalır.',
+    li: ['Çoklu barkod', 'Excel/CSV toplu import', 'Kritik seviye alarmı'] },
+  { n: '04', t: 'İstatistik & Analiz', img: '/assets/shots/analiz.png', url: 'arcteknik.app/analiz',
+    p: 'Marka ve arıza dağılımı, teknisyen performansı, dönemsel kâr. Kararlarınızı veriyle verin.',
+    li: ['Marka/arıza dağılımı', 'Teknisyen performansı', 'Dönemsel raporlar'] },
+  { n: '05', t: 'ArcTeknik Şef · Masa Planı', img: '/assets/shots/restoran-masa.png', url: 'arcteknik.app/restoran', chef: true,
+    p: 'Dokunmatik masa planı, canlı masa süresi ve anlık adisyon tutarı. Tek dokunuşla sipariş mutfağa.',
+    li: ['Canlı masa süresi', 'PIN ile saniyede giriş', 'Anlık adisyon tutarı'] },
+  { n: '06', t: 'ArcTeknik Şef · Mutfak (KDS)', img: '/assets/shots/restoran-mutfak.png', url: 'arcteknik.app/restoran/mutfak', chef: true,
+    p: 'Siparişler anında mutfağa düşer; geciken masa kırmızı yanıp sesli uyarır. Bar/fırın/kasa ayrı yazıcı.',
+    li: ['Geciken sipariş alarmı', 'Çoklu yazıcı yönlendirme', 'Combo otomatik parçalama'] },
+];
+const sektorler = ['Teknik Servis', 'Bilgisayar Atölyesi', 'Telefon Tamiri', 'Beyaz Eşya Servisi', 'Restoran', 'Kafe', 'Pideci & Lahmacun', 'Pastane', 'Cafe-Bistro'];
+---
+<Base title="ArcTeknik — İşletme Otomasyon Platformu">
+
+  <!-- HERO (app-first) -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <span class="eyebrow reveal"><span class="dot"></span> İki ürün · tek çatı · %100 offline çalışır</span>
+      <h1 class="reveal">İşletmenizin <span class="grad">tüm operasyonu</span><br />tek ekranda akıyor.</h1>
+      <p class="hero__sub reveal"><strong>Teknik servisler</strong> için kabul, kasa, WhatsApp CRM ve garanti; <strong>restoranlar</strong> için <em>ArcTeknik Şef</em> ile masa planı, mutfak ekranı ve paket servis. Kağıdı bırakın; kontrolü, kârı ve memnuniyeti ölçün.</p>
+      <div class="hero__actions reveal">
+        <a href="/iletisim" class="btn btn--primary btn--lg">Ücretsiz Demo Talep Et</a>
+        <a href="/ekranlar" class="btn btn--outline btn--lg">Canlı Ekranları Gör →</a>
+      </div>
+      <ul class="hero__badges reveal">
+        <li>✓ Verileriniz kendi bilgisayarınızda</li>
+        <li>✓ Tek tık masaüstü kurulumu</li>
+        <li>✓ Lisanslı & güvenli</li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="herostage reveal" data-reveal="scale" aria-hidden="true">
+        <div class="herostage__glow"></div>
+        <div class="device herostage__main">
+          <div class="device__bar"><i></i><i></i><i></i><span>arcteknik.app/panel</span></div>
+          <img src="/assets/shots/dashboard.png" alt="ArcTeknik Komuta Merkezi" />
+        </div>
+        <div class="herostage__float herostage__float--1">💬 WhatsApp gönderildi</div>
+        <div class="herostage__float herostage__float--2">📈 Aylık net kâr ↑ %24</div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="marq">
+        <div class="marq__row">
+          {[...sektorler, ...sektorler].map((s) => <span>{s}<span style="opacity:.3;margin-left:3.4rem">◆</span></span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GSAP YATAY SHOWCASE -->
+  <section class="showcase" id="showcase">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="kicker">Uçtan uca</span>
+        <h2>Mockup değil — <span class="grad">gerçek uygulama</span>, modül modül</h2>
+        <p>Kaydırın; her modül kendi ekranıyla karşınıza gelsin.</p>
+      </div>
+    </div>
+    <div class="showcase__hint"><span>Kaydırarak gezin</span> <span class="ar">→</span></div>
+    <div class="showcase__viewport">
+      <div class="showcase__track">
+        {showcase.map((s) => (
+          <article class="panel">
+            <div class={'device' + (s.chef ? ' device--chef' : '')}>
+              <div class="device__bar"><i></i><i></i><i></i><span>{s.url}</span></div>
+              <img src={s.img} alt={s.t} loading="lazy" />
+            </div>
+            <div class="panel__copy">
+              <span class="num">{s.n}</span>
+              <h3>{s.t}</h3>
+              <p>{s.p}</p>
+              <ul>{s.li.map((x) => <li>{x}</li>)}</ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- İKİ ÜRÜN -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="kicker">Ürünler</span>
+        <h2>Sektörünüze özel <span class="grad">iki güçlü çözüm</span></h2>
+        <p>Aynı sağlam altyapı, işinize göre iki ayrı ürün. İster ayrı, ister birlikte.</p>
+      </div>
+      <div class="grid grid--3" style="grid-template-columns:1fr 1fr">
+        <article class="card feature reveal" data-reveal="left">
+          <span class="feature__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg></span>
+          <h3>ArcTeknik Suite — Teknik Servis</h3>
+          <p>Cihaz kabulü, kasa & net kâr, WhatsApp CRM, garanti ve müşteri sorgulama portalı. Telefon, bilgisayar, beyaz eşya tamiri için uçtan uca.</p>
+          <p style="margin:1rem 0 1.3rem"><a href="/teknik-servis" class="btn btn--outline">Özellikleri Gör →</a></p>
+        </article>
+        <article class="card feature reveal" data-reveal="right">
+          <span class="feature__ico" style="background:linear-gradient(135deg,#fbbf24,#fb5b6b)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6z"/><line x1="6" y1="17" x2="18" y2="17"/></svg></span>
+          <h3>ArcTeknik Şef — Restoran & Adisyon</h3>
+          <p>Dokunmatik masa planı, mutfak ekranı (KDS), çoklu yazıcı, combo menü, paket servis ve kurye takibi. Restoran, kafe ve pideciler için.</p>
+          <p style="margin:1rem 0 1.3rem"><a href="/sef" class="btn btn--chef">ArcTeknik Şef'i Keşfet →</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÖNCE / SONRA -->
+  <section class="section">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="kicker">Neden ArcTeknik?</span>
+        <h2>Dağınıklığı bırakın, <span class="grad">kurumsal düzene</span> geçin</h2>
+      </div>
+      <div class="split">
+        <div class="card split__card split__card--bad reveal" data-reveal="left">
+          <h3>Önce</h3>
+          <ul>
+            <li>Kağıt fişlerde kaybolan takip</li>
+            <li>“Hazır mı?” telefonları</li>
+            <li>Unutulan, tahsil edilemeyen bakiyeler</li>
+            <li>Kârın ne olduğunu bilememe</li>
+            <li>Restoranda kaçak/zayi kontrolü yok</li>
+          </ul>
+        </div>
+        <div class="card split__card split__card--good reveal" data-reveal="right">
+          <h3>Sonra</h3>
+          <ul>
+            <li>Her kayıt tek panelde, anlık durumuyla</li>
+            <li>Otomatik WhatsApp bilgilendirme</li>
+            <li>Ödeme bekleyene anında uyarı</li>
+            <li>Aylık net kâr, tek bakışta</li>
+            <li>İptal/zayi nedeni + yönetici onayı</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İSTATİSTİK BENTO -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="bento">
+        <div class="card b b--lg reveal">
+          <div class="b__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Verileriniz sizde, kontrol sizde</h3>
+          <p>Tüm kayıtlar kendi bilgisayarınızdaki SQL veritabanında. Bulut zorunluluğu yok; internet olmadan da çalışır. RSA imzalı offline lisans, saat geri alma koruması ve audit log ile her işlem kayıt altında.</p>
+          <div class="b__big-visual"><img src="/assets/shots/analiz.png" alt="Analiz" loading="lazy" /></div>
+        </div>
+        <div class="card b reveal"><div class="b__stat"><span data-count>16</span>+</div><p>Hazır modül</p></div>
+        <div class="card b reveal"><div class="b__stat"><span data-count>100</span>%</div><p>Çevrimdışı çalışabilir</p></div>
+        <div class="card b b--wide reveal">
+          <div class="b__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg></div>
+          <h3>WhatsApp CRM otomasyonu</h3>
+          <p>Kabul, onay, tamir ve teslim aşamalarında müşteriye otomatik mesaj + canlı takip linki. Telefon trafiğiniz azalır, memnuniyet artar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container cta__inner reveal">
+      <h2>İşletmenizi bugün <span class="grad">dijitalleştirin</span></h2>
+      <p>Ücretsiz demo talep edin; servis mi restoran mı — işletmenize özel kurulumu birlikte planlayalım.</p>
+      <div class="hero__actions" style="justify-content:center">
+        <a href="/iletisim" class="btn btn--primary btn--lg">Demo Talep Et</a>
+        <a href="/paketler" class="btn btn--outline btn--lg">Paketleri İncele</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

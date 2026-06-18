@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+
+const faqs = [
+  { q: 'Verilerim buluta mı gidiyor?', a: 'Hayır. Tüm verileriniz kendi bilgisayarınızdaki SQL Server veritabanında tutulur. Sistem internet olmadan da çalışır; kontrol tamamen sizde kalır.' },
+  { q: 'Kurulumu zor mu?', a: 'Hayır. Masaüstü uygulaması tek tıkla kurulur ve veritabanı ilk açılışta otomatik oluşturulur. Manuel veritabanı işlemleri gerekmez.' },
+  { q: 'WhatsApp entegrasyonu nasıl çalışır?', a: 'Uygulama açıldığında bir kez QR kodu okutmanız yeterli. Sonrasında kabul, onay, tamir ve teslim mesajları müşterilere otomatik gönderilir.' },
+  { q: 'Telefondan erişebilir miyim?', a: 'Evet. Mobil uyumlu arayüz ve güvenli uzaktan erişim ile dükkân dışından da panelinize ulaşabilirsiniz.' },
+  { q: 'Birden fazla bilgisayarda kullanabilir miyim?', a: 'Evet. Sunucu/istemci modu ile birden çok bilgisayar aynı merkezi veritabanına bağlanabilir.' },
+  { q: 'Lisanslama nasıl?', a: 'Yıllık, RSA imzalı offline lisans kullanılır. Lisansınızı tek bir dosyayla aktive eder, internet bağlantısı olmadan doğrulayabilirsiniz.' },
+  { q: 'ArcTeknik Şef ile Suite ayrı mı?', a: 'ArcTeknik Şef restoranlar için ayrı, bağımsız bir üründür; kendi kurulumu ve lisansıyla tek başına kullanılabilir. Teknik servis işiniz de varsa ikisini birlikte alabilirsiniz.' },
+  { q: 'ArcTeknik Şef hangi donanımlarla çalışır?', a: 'Dokunmatik kasa/tablet, termal fiş yazıcılar (mutfak/bar/kasa ayrı) ve garsonların telefonu (mobil garson ekranı) ile çalışır. Çoklu yazıcı yönlendirmesi desteklenir.' },
+  { q: 'Verilerimin yedeği alınıyor mu?', a: 'SQL veritabanınızın yedeğini istediğiniz sıklıkta alabilirsiniz; kurumsal kurulumda otomatik yedekleme planlanabilir.' },
+  { q: 'Personelim fiyat/maliyeti görebiliyor mu?', a: 'Rol bazlı yetki ile fiyat ve maliyet bilgisi teknisyenden gizlenebilir. Her kritik işlem audit log ile kayıt altındadır.' },
+];
+---
+<Base title="Sıkça Sorulan Sorular — ArcTeknik" description="ArcTeknik ve ArcTeknik Şef hakkında sık sorulan sorular: veri güvenliği, kurulum, WhatsApp, lisanslama, donanım.">
+
+  <section class="pagehero">
+    <div class="container">
+      <p class="crumb reveal"><a href="/">Ana Sayfa</a> · SSS</p>
+      <span class="eyebrow reveal"><span class="dot"></span> Sıkça Sorulan Sorular</span>
+      <h1 class="reveal">Aklınızdaki <span class="grad">sorular</span></h1>
+      <p class="reveal">Aradığınızı bulamazsanız bize yazın; hızla yanıtlayalım.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:36px">
+    <div class="container container--narrow">
+      <div class="faq">
+        {faqs.map((f) => (
+          <details class="reveal"><summary>{f.q}</summary><p>{f.a}</p></details>
+        ))}
+      </div>
+      <p class="reveal" style="text-align:center;margin-top:28px"><a href="/iletisim" class="btn btn--primary">Sorunuz mu var? Bize yazın →</a></p>
+    </div>
+  </section>
+
+</Base>

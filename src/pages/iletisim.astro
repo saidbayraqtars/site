@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="İletişim & Demo Talep — ArcTeknik" description="ArcTeknik ücretsiz demo talep edin. Servis mi restoran mı — işletmenize özel kurulumu birlikte planlayalım.">
+
+  <section class="pagehero">
+    <div class="container">
+      <p class="crumb reveal"><a href="/">Ana Sayfa</a> · İletişim</p>
+      <span class="eyebrow reveal"><span class="dot"></span> 24 saat içinde dönüş</span>
+      <h1 class="reveal">İşletmenizi bugün <span class="grad">dijitalleştirin</span></h1>
+      <p class="reveal">Formu doldurun; servis mi restoran mı, işletmenize özel kurulumu birlikte planlayalım.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:40px">
+    <div class="container container--narrow">
+      <div class="card reveal" style="padding:34px">
+        <form class="form" onsubmit="return arcSubmit(event)">
+          <input type="text" name="ad" placeholder="Ad Soyad" required />
+          <input type="text" name="firma" placeholder="İşletme adı" required />
+          <input type="tel" name="tel" placeholder="Telefon" required />
+          <input type="email" name="email" placeholder="E-posta" />
+          <select name="urun" aria-label="İlgilendiğiniz ürün">
+            <option value="suite">ArcTeknik Suite (Teknik Servis)</option>
+            <option value="sef">ArcTeknik Şef (Restoran)</option>
+            <option value="ikisi">İkisi de</option>
+          </select>
+          <textarea name="mesaj" placeholder="Kısaca işletmeniz ve ihtiyacınız (isteğe bağlı)"></textarea>
+          <button type="submit" class="btn btn--primary btn--lg">Demo Talep Et</button>
+        </form>
+        <p id="formNote" style="text-align:center;margin-top:1.2rem;color:var(--muted)">Veya bizi arayın · <strong style="color:#fff">0850 000 00 00</strong> · saidbayraktar9@gmail.com</p>
+      </div>
+
+      <div class="grid grid--3" style="margin-top:24px">
+        <div class="card feature reveal"><h3>📞 Telefon</h3><p><a href="tel:08500000000">0850 000 00 00</a><br>Hafta içi 09:00–18:00</p></div>
+        <div class="card feature reveal"><h3>✉️ E-posta</h3><p><a href="mailto:saidbayraktar9@gmail.com">saidbayraktar9@gmail.com</a><br>24 saat içinde yanıt</p></div>
+        <div class="card feature reveal"><h3>🔑 Lisans Paneli</h3><p><a href="https://lisans.arcteknik.com.tr">lisans.arcteknik.com.tr</a> <span class="badge-soon">yakında</span><br>Self-servis lisans yönetimi</p></div>
+      </div>
+    </div>
+  </section>
+
+</Base>

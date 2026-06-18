@@ -1,0 +1,101 @@
+---
+import Base from '../layouts/Base.astro';
+
+const feats = [
+  { b: 'Dokunmatik masa planı & PIN giriş', s: 'Garson kendi PIN’iyle saniyede girer; sipariş sonrası ekran otomatik kilitlenir.' },
+  { b: 'Mutfak Ekranı (KDS) + geciken alarm', s: 'Siparişler anında mutfağa düşer; 15 dakikayı geçen masa kırmızı yanıp sesli uyarır.' },
+  { b: 'Çoklu yazıcı yönlendirme & combo menü', s: 'Lahmacun fırına, kola bara; combo siparişi otomatik parçalanır.' },
+  { b: 'Paket servis, kurye & sadakat puanı', s: 'Telefon siparişi, adres, kurye zimmeti ve müşteri puanı tek ekranda.' },
+  { b: 'Hırsızlık & kayıp önleme', s: 'İptal/zayi nedeni + yönetici onayı, ikram/personel takibi, Z raporunda her şey.' },
+  { b: 'Rezervasyon, ön hesap & masa süresi', s: 'Masa birleştir/ürün taşı, ön hesap (pusula) bas, canlı masa süresini gör.' },
+];
+---
+<Base title="ArcTeknik Şef — Restoran & Adisyon Sistemi" description="Restoran, kafe ve pideciler için dokunmatik adisyon: masa planı, mutfak ekranı (KDS), çoklu yazıcı yönlendirme, combo menü, paket servis ve kurye takibi.">
+
+  <section class="pagehero">
+    <div class="container">
+      <p class="crumb reveal"><a href="/">Ana Sayfa</a> · ArcTeknik Şef</p>
+      <span class="eyebrow reveal" style="color:#fcd9a8;border-color:rgba(245,158,11,.3)"><span class="dot" style="background:#fbbf24;box-shadow:0 0 0 3px rgba(245,158,11,.25)"></span> ArcTeknik Şef</span>
+      <h1 class="reveal">Restoranınız için <span class="grad--chef">dokunmatik adisyon sistemi</span></h1>
+      <p class="reveal">Masa planından mutfağa, paket servisten kuryeye kadar restoran operasyonunun tamamı. Tek dokunuşla sipariş, anında mutfak, kuruşu kuruşuna kontrol.</p>
+      <div class="hero__actions reveal" style="justify-content:center">
+        <a href="/iletisim" class="btn btn--chef btn--lg">ArcTeknik Şef Demo</a>
+        <a href="/ekranlar" class="btn btn--outline btn--lg">Ekranları Gör →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:46px">
+    <div class="container fsplit">
+      <div class="reveal" data-reveal="left">
+        <div class="rmock">
+          <div class="rmock__bar"><span class="rmock__title">🍽️ Masa Planı · Salon</span><span class="rmock__live">12 masa · 5 dolu</span></div>
+          <div class="rmock__grid">
+            <span class="tbl tbl--free">1</span><span class="tbl tbl--busy">2<i>1s 12dk</i></span>
+            <span class="tbl tbl--free">3</span><span class="tbl tbl--busy">4<i>34dk</i></span>
+            <span class="tbl tbl--resv">5</span><span class="tbl tbl--busy">6<i>2s 05dk</i></span>
+            <span class="tbl tbl--free">7</span><span class="tbl tbl--busy">8<i>48dk</i></span>
+            <span class="tbl tbl--free">9</span><span class="tbl tbl--busy tbl--late">10<i>geç</i></span>
+            <span class="tbl tbl--free">11</span><span class="tbl tbl--free">12</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" data-reveal="right">
+        <span class="kicker kicker--chef">Tek ekranda restoran</span>
+        <h2 style="color:#fff">Garsondan mutfağa <span class="grad--chef">sıfır gecikme</span></h2>
+        <p>Adisyon dokunuşla açılır, sipariş ilgili yazıcıya/mutfağa anında düşer. Masa süresi, ön hesap ve tahsilat tek akışta.</p>
+        <ul class="checklist">
+          <li>PIN ile saniyede garson girişi</li>
+          <li>Anlık adisyon tutarı & ön hesap (pusula)</li>
+          <li>Mobil garson (telefon) desteği</li>
+          <li>Reçete → otomatik stok sarfiyatı</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="sec-head reveal"><span class="kicker kicker--chef">Özellikler</span><h2>Salonu da mutfağı da <span class="grad--chef">kontrol altına alın</span></h2></div>
+      <div class="grid grid--3">
+        {feats.map((f) => (
+          <article class="card feature reveal">
+            <span class="feature__ico" style="background:linear-gradient(135deg,#fbbf24,#fb5b6b)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg></span>
+            <h3>{f.b}</h3>
+            <p>{f.s}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container fsplit">
+      <div class="reveal" data-reveal="left">
+        <span class="kicker kicker--chef">Mutfak Ekranı (KDS)</span>
+        <h2 style="color:#fff">Geciken sipariş <span class="grad--chef">gözünüzden kaçmasın</span></h2>
+        <p>Siparişler anında mutfağa düşer. 15 dakikayı aşan masa kırmızı yanıp sesli uyarır; bar, fırın ve kasa için ayrı yazıcı yönlendirmesi yapılır.</p>
+        <ul class="checklist">
+          <li>Geciken sipariş kırmızı alarm + ses</li>
+          <li>İstasyon bazlı (bar/fırın/kasa) yazıcı</li>
+          <li>Combo otomatik bileşen parçalama</li>
+        </ul>
+      </div>
+      <div class="reveal" data-reveal="right">
+        <div class="device device--chef">
+          <div class="device__bar"><i></i><i></i><i></i><span>arcteknik.app/restoran/mutfak</span></div>
+          <img src="/assets/shots/restoran-mutfak.png" alt="Mutfak ekranı (KDS)" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container cta__inner reveal">
+      <h2>Restoranınızı <span class="grad--chef">ArcTeknik Şef</span> ile yönetin</h2>
+      <p>Bağımsız kurulum ve lisans; tek başına ya da Suite ile birlikte.</p>
+      <div class="hero__actions" style="justify-content:center"><a href="/iletisim" class="btn btn--chef btn--lg">Demo Talep Et</a><a href="/paketler" class="btn btn--outline btn--lg">Paketler</a></div>
+    </div>
+  </section>
+
+</Base>

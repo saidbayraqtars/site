@@ -1,0 +1,108 @@
+---
+import Base from '../layouts/Base.astro';
+
+const features = [
+  { t: 'Müşteri & Cihaz Kabulü', p: 'Marka, model, şifre ve şikâyet tek formda. Hasar fotoğrafı ekleyin, yazdırılabilir servis fişini anında oluşturun.', d: 'M3 4h18v16H3zM3 9h18M8 4v16' },
+  { t: 'Kasa, Finans & Net Kâr', p: 'Gelir-gider, kapora ve aylık filtre. Servis maliyetleri düşülerek gerçek net kâr otomatik hesaplanır.', d: 'M3 3v18h18M7 14l3-3 3 3 4-5' },
+  { t: 'WhatsApp CRM', p: 'Kabul, onay, tamir ve teslim aşamalarında otomatik mesaj. Müşteri takip linkiyle her zaman bilgilendirilir.', d: 'M21 11.5a8.38 8.38 0 0 1-9 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.5 8.5 0 1 1 21 11.5z' },
+  { t: 'Müşteri Sorgulama Portalı', p: 'Müşteri, servis no ve telefonuyla durumu zaman çizelgesinde görür; fiyatı onaylar ya da iade talep eder.', d: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2' },
+  { t: 'QR Etiket & Hızlı Arama', p: 'Termal yazıcı için QR’lı servis etiketi. Etiketi okutarak cihaz kaydına saniyeler içinde ulaşın.', d: 'M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 17h3v3h-3z' },
+  { t: 'Garanti Takibi', p: 'Seri numarasıyla aktif garanti uyarısı. İşlem bazlı garanti süresi tanımlayın, tekrar geleni anında tanıyın.', d: 'M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4zM9 12l2 2 4-4' },
+  { t: 'Stok & Parça Maliyeti', p: 'Çoklu barkod, kategori/marka, Excel import. Servise düşen parça ACID güvenliğiyle stoktan azalır.', d: 'M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4 9-4V7' },
+  { t: 'Personel & Rol Yönetimi', p: 'Admin/teknisyen rolleri. Fiyat-maliyet teknisyenden gizlenir; her işlem audit log ile kayıt altında.', d: 'M9 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM2 21v-2a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v2' },
+  { t: 'İstatistik & Analiz', p: 'Marka ve arıza dağılımı, teknisyen performansı ve net kâr ölçülebilir raporlarla görünür hale gelir.', d: 'M18 20V10M12 20V4M6 20v-6' },
+];
+---
+<Base title="ArcTeknik Suite — Teknik Servis Otomasyonu" description="Telefon, bilgisayar ve elektronik tamir servisleri için uçtan uca yönetim: cihaz kabulü, kasa & net kâr, WhatsApp CRM, garanti ve müşteri sorgulama portalı.">
+
+  <section class="pagehero">
+    <div class="container">
+      <p class="crumb reveal"><a href="/">Ana Sayfa</a> · Teknik Servis</p>
+      <span class="eyebrow reveal"><span class="dot"></span> ArcTeknik Suite</span>
+      <h1 class="reveal">Servisinizi büyütecek <span class="grad">eksiksiz modüller</span></h1>
+      <p class="reveal">Cihaz kapıdan girdiği andan teslim edildiği ana kadar her adım tek panelde, otomatik akar.</p>
+      <div class="hero__actions reveal" style="justify-content:center">
+        <a href="/iletisim" class="btn btn--primary btn--lg">Ücretsiz Demo</a>
+        <a href="/ekranlar" class="btn btn--outline btn--lg">Ekranları Gör →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:40px">
+    <div class="container">
+      <div class="herostage reveal" data-reveal="scale" style="margin-top:0">
+        <div class="herostage__glow"></div>
+        <div class="device herostage__main">
+          <div class="device__bar"><i></i><i></i><i></i><span>arcteknik.app/kasa</span></div>
+          <img src="/assets/shots/kasa.png" alt="Kasa ve net kâr" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="kicker">Modüller</span>
+        <h2>Birbiriyle entegre <span class="grad">çalışan modüller</span></h2>
+      </div>
+      <div class="grid grid--3">
+        {features.map((f) => (
+          <article class="card feature reveal">
+            <span class="feature__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={f.d}/></svg></span>
+            <h3>{f.t}</h3>
+            <p>{f.p}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="sec-head reveal"><span class="kicker">Nasıl Çalışır</span><h2>Dört adımda <span class="grad">tam kontrol</span></h2></div>
+      <ol class="steps">
+        <li class="card step reveal"><span class="step__no">01</span><h3>Kabul Et</h3><p>Cihazı kaydet, hasarı fotoğrafla, fişi yazdır ve QR etiketini yapıştır.</p></li>
+        <li class="card step reveal"><span class="step__no">02</span><h3>Takip Et</h3><p>Durumu güncelle; müşteriye otomatik WhatsApp bilgilendirmesi gitsin.</p></li>
+        <li class="card step reveal"><span class="step__no">03</span><h3>Onaylat & Tahsil Et</h3><p>Fiyatı müşteri telefonundan onaylasın, kasaya işle, bakiyeyi takip et.</p></li>
+        <li class="card step reveal"><span class="step__no">04</span><h3>Analiz Et</h3><p>Net kâr, marka/arıza dağılımı ve teknisyen performansını raporla.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container fsplit">
+      <div class="reveal" data-reveal="left">
+        <span class="kicker">Otomatik İletişim</span>
+        <h2>Müşterilerinizi <span class="grad">siz aramadan</span> bilgilendirin</h2>
+        <p>Her durum değişikliğinde müşterinin telefonuna otomatik WhatsApp mesajı ve kişisel takip linki gider. Telefon trafiğiniz azalır, memnuniyet artar.</p>
+        <ul class="checklist">
+          <li>Kabul, onay, tamir, teslim mesajları hazır şablonlarla</li>
+          <li>Müşteriye özel canlı takip linki</li>
+          <li>Ödeme bekleyen müşteri için otomatik uyarı</li>
+          <li>Periyodik bakım ve geri kazanım hatırlatmaları</li>
+        </ul>
+      </div>
+      <div class="reveal" data-reveal="right">
+        <div class="phone">
+          <div class="phone__notch"></div>
+          <div class="phone__screen">
+            <div class="wa wa--in"><p>Cihazınız servise alındı ✅<br><small>Servis No: #10482</small></p></div>
+            <div class="wa wa--in"><p>Onarım fiyatı: <strong>₺1.250</strong><br><small>Onaylamak için bağlantıya dokunun</small></p></div>
+            <div class="wa wa--out"><p>Onaylıyorum 👍</p></div>
+            <div class="wa wa--in"><p>Cihazınız tamir edildi 🔧<br>Teslime hazır!</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container cta__inner reveal">
+      <h2>Teknik servisinizi <span class="grad">bugün dijitalleştirin</span></h2>
+      <p>Kurulumu birlikte planlayalım; verileriniz kendi bilgisayarınızda kalsın.</p>
+      <div class="hero__actions" style="justify-content:center"><a href="/iletisim" class="btn btn--primary btn--lg">Demo Talep Et</a><a href="/paketler" class="btn btn--outline btn--lg">Paketler</a></div>
+    </div>
+  </section>
+
+</Base>
