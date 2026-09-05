@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ .Title }} · {{ .Site.Name }}</title>
+<meta name="description" content="{{ .Desc }}">
+<meta name="theme-color" content="#0A1020">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ .Site.Name }}">
+<meta property="og:title" content="{{ .Title }} · {{ .Site.Name }}">
+<meta property="og:description" content="{{ .Desc }}">
+<meta property="og:url" content="{{ .Site.BaseURL }}{{ .Path }}">
+<link rel="canonical" href="{{ .Site.BaseURL }}{{ .Path }}">
+<link rel="icon" href="/static/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/static/css/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MovingCompany","name":"{{ .Site.Legal }}","url":"{{ .Site.BaseURL }}","telephone":"{{ .Site.PhoneHref }}","email":"{{ .Site.Email }}","address":{"@type":"PostalAddress","streetAddress":"{{ .Site.Address }}","addressCountry":"TR"},"areaServed":"TR","foundingDate":"{{ .Site.Founded }}"}
+</script>
+</head>
+<body>
+{{ template "icons" . }}
+
+<a class="skip" href="#icerik">İçeriğe geç</a>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="/" aria-label="{{ .Site.Name }} ana sayfa">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><use href="#i-logo"></use></svg>
+      <span class="brand-txt"><b>Yükrota</b><i>lojistik</i></span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Ana menü">
+      {{ $p := .Path }}
+      {{ range .Nav }}<a href="{{ .Href }}"{{ if eq .Href $p }} class="on" aria-current="page"{{ end }}>{{ .Label }}</a>{{ end }}
+    </nav>
+
+    <div class="hdr-cta">
+      <a class="tel" href="tel:{{ .Site.PhoneHref }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"></use></svg>{{ .Site.Phone }}
+      </a>
+      <a class="btn btn-a" href="/iletisim/">Teklif al</a>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Menüyü aç">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="icerik">
+{{ template "main" . }}
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr-grid">
+    <div class="ftr-brand">
+      <a class="brand brand-lg" href="/">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><use href="#i-logo"></use></svg>
+        <span class="brand-txt"><b>Yükrota</b><i>lojistik</i></span>
+      </a>
+      <p>{{ .Site.Tagline }}</p>
+      <p class="ftr-legal">{{ .Site.Legal }}<br>{{ .Site.Address }}</p>
+    </div>
+    <div>
+      <h4>Hizmetler</h4>
+      <a href="/hizmetler/evden-eve-nakliyat/">Evden eve nakliyat</a>
+      <a href="/hizmetler/parsiyel-tasimacilik/">Parsiyel taşımacılık</a>
+      <a href="/hizmetler/komple-yuk-tasimaciligi/">Komple yük</a>
+      <a href="/hizmetler/depolama-ve-ellecleme/">Depolama</a>
+      <a href="/hizmetler/uluslararasi-tasimacilik/">Uluslararası</a>
+      <a href="/hizmetler/ofis-ve-fabrika-tasima/">Ofis ve fabrika</a>
+    </div>
+    <div>
+      <h4>Kurumsal</h4>
+      <a href="/hakkimizda/">Hakkımızda</a>
+      <a href="/filo/">Filo ve ağ</a>
+      <a href="/sss/">Sık sorulan sorular</a>
+      <a href="/iletisim/">İletişim</a>
+    </div>
+    <div>
+      <h4>Bize ulaşın</h4>
+      <a href="tel:{{ .Site.PhoneHref }}">{{ .Site.Phone }}</a>
+      <a href="mailto:{{ .Site.Email }}">{{ .Site.Email }}</a>
+      <a href="https://wa.me/{{ .Site.Whatsapp }}" rel="noopener">WhatsApp destek hattı</a>
+      <p class="ftr-hours">{{ .Site.Hours }}</p>
+    </div>
+  </div>
+  <div class="wrap ftr-bot">
+    <span>© {{ .Site.Year }} {{ .Site.Legal }} · Tüm hakları saklıdır.</span>
+    <span>U-NET yetki belgesi K1 · CMR sigortalı taşıma</span>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/{{ .Site.Whatsapp }}" rel="noopener" aria-label="WhatsApp'tan yazın">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"></use></svg>
+</a>
+
+<script src="/static/js/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{{ define "main" }}
+{{ template "pagehead" . }}
+{{ $d := .Data }}{{ $s := $d.Service }}
+
+<section class="sec">
+  <div class="wrap two-col">
+    <article class="prose reveal">
+      <h2>{{ $s.Title }} hizmetimiz</h2>
+      {{ range $s.Body }}<p>{{ . }}</p>{{ end }}
+
+      <h3>Hizmete dahil olanlar</h3>
+      <ul class="ticks">
+        {{ range $s.Includes }}<li><svg viewBox="0 0 24 24"><use href="#i-check"></use></svg>{{ . }}</li>{{ end }}
+      </ul>
+
+      <div class="pills">{{ range $s.Features }}<span class="pill">{{ . }}</span>{{ end }}</div>
+    </article>
+
+    <aside class="side reveal">
+      <div class="side-card">
+        <span class="sicon"><svg viewBox="0 0 24 24"><use href="#i-{{ $s.Icon }}"></use></svg></span>
+        <h3>Fiyatlandırma</h3>
+        <p class="price">{{ $s.Price }}</p>
+        <p class="side-note">Kesin fiyat, ücretsiz ekspertiz sonrası kalem kalem yazılı olarak verilir ve değişmez.</p>
+        <a class="btn btn-a btn-block" href="/iletisim/">Teklif alın</a>
+        <a class="btn btn-line btn-block" href="tel:{{ .Site.PhoneHref }}">{{ .Site.Phone }}</a>
+      </div>
+      <div class="side-card side-card-2">
+        <h3>Diğer hizmetler</h3>
+        {{ range $d.Others }}
+        <a class="side-link" href="/hizmetler/{{ .Slug }}/">
+          <svg viewBox="0 0 24 24"><use href="#i-{{ .Icon }}"></use></svg>{{ .Title }}
+        </a>
+        {{ end }}
+      </div>
+    </aside>
+  </div>
+</section>
+
+{{ template "cta" . }}
+{{ end }}

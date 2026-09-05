@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{ template "pagehead" . }}
+{{ $d := .Data }}
+
+<section class="sec">
+  <div class="wrap">
+    <div class="grid-3">
+      {{ range $d.Services }}
+      <a class="scard reveal" href="/hizmetler/{{ .Slug }}/">
+        <span class="sicon"><svg viewBox="0 0 24 24"><use href="#i-{{ .Icon }}"></use></svg></span>
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Short }}</p>
+        <ul class="mini">{{ range .Features }}<li>{{ . }}</li>{{ end }}</ul>
+        <span class="more">Detaylar <svg viewBox="0 0 24 24"><use href="#i-arrow"></use></svg></span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-alt">
+  <div class="wrap steps-wrap">
+    <header class="sec-head sec-head-l reveal">
+      <span class="kicker"><i></i>Nasıl çalışıyoruz</span>
+      <h2>Hangi hizmeti seçerseniz seçin, süreç aynı</h2>
+      <p>Teklif, planlama, taşıma ve teslim adımları tüm hizmetlerimizde tek standarda bağlıdır.</p>
+    </header>
+    <ol class="steps">
+      {{ range $d.Steps }}
+      <li class="reveal"><b>{{ .No }}</b><div><h3>{{ .Title }}</h3><p>{{ .Text }}</p></div></li>
+      {{ end }}
+    </ol>
+  </div>
+</section>
+
+{{ template "cta" . }}
+{{ end }}

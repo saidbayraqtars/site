@@ -1,0 +1,27 @@
+{{ define "main" }}
+{{ template "pagehead" . }}
+{{ $d := .Data }}
+
+<section class="sec">
+  <div class="wrap narrow">
+    <div class="faq faq-lg reveal">
+      {{ range $i, $f := $d.Faqs }}
+      <details{{ if eq $i 0 }} open{{ end }}>
+        <summary>{{ $f.Q }}<span class="chev" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>{{ $f.A }}</p></div>
+      </details>
+      {{ end }}
+    </div>
+    <div class="ask reveal">
+      <div>
+        <h3>Sorunuzun cevabı yok mu?</h3>
+        <p>Operasyon ekibimiz hafta içi 08:00–20:00 arasında telefonun başında.</p>
+      </div>
+      <div class="cta-btns">
+        <a class="btn btn-a" href="tel:{{ .Site.PhoneHref }}">{{ .Site.Phone }}</a>
+        <a class="btn btn-line" href="/iletisim/">Form doldurun</a>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

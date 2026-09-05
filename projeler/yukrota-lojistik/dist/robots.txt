@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yukrota.com.tr/sitemap.xml

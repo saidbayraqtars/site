@@ -1,0 +1,15 @@
+{{ define "pagehead" }}
+<section class="phead">
+  <div class="phead-bg" aria-hidden="true">
+    <svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice">
+      <path class="route" d="M-50 230 C 250 230 320 110 600 110 S 950 60 1300 60"/>
+    </svg>
+  </div>
+  <div class="wrap phead-in">
+    <nav class="crumbs" aria-label="Sayfa yolu"><a href="/">Ana sayfa</a><span>/</span><b>{{ .Kicker }}</b></nav>
+    <span class="kicker"><i></i>{{ .Kicker }}</span>
+    <h1>{{ .Heading }}</h1>
+    <p class="lead">{{ .Sub }}</p>
+  </div>
+</section>
+{{ end }}

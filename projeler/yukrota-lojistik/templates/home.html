@@ -1,0 +1,191 @@
+{{ define "main" }}
+{{ $d := .Data }}
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
+      <path class="route" d="M-50 470 C 220 470 260 300 470 300 S 760 150 1000 150 1300 120 1300 120" />
+      <path class="route route-2" d="M-50 560 C 300 560 380 420 640 420 S 980 330 1300 330" />
+      <circle class="dot" cx="470" cy="300" r="6"/><circle class="dot" cx="1000" cy="150" r="6"/>
+      <circle class="dot" cx="640" cy="420" r="6"/>
+    </svg>
+  </div>
+
+  <div class="wrap hero-in">
+    <div class="hero-txt reveal">
+      <span class="kicker"><i></i>2009'dan beri 81 ilde taşıyoruz</span>
+      <h1>Yükünüz yola çıktığı andan itibaren <em>bizim işimiz.</em></h1>
+      <p class="lead">Evden eve nakliyattan fabrika taşımaya, parsiyel gönderiden uluslararası sefere kadar; sabit fiyat, sigortalı taşıma ve anlık takip ile.</p>
+      <div class="hero-btns">
+        <a class="btn btn-a btn-lg" href="/iletisim/">Ücretsiz teklif alın <svg viewBox="0 0 24 24"><use href="#i-arrow"></use></svg></a>
+        <a class="btn btn-ghost btn-lg" href="tel:{{ .Site.PhoneHref }}">{{ .Site.Phone }}</a>
+      </div>
+      <ul class="hero-trust">
+        <li><svg viewBox="0 0 24 24"><use href="#i-check"></use></svg>Yazılı sabit fiyat</li>
+        <li><svg viewBox="0 0 24 24"><use href="#i-check"></use></svg>Sigorta dahil</li>
+        <li><svg viewBox="0 0 24 24"><use href="#i-check"></use></svg>Peşinatsız</li>
+      </ul>
+    </div>
+
+    <form class="quote card-glass reveal" id="quote" action="/iletisim/" method="get">
+      <h2>Hızlı teklif</h2>
+      <p class="quote-sub">Kaba bir fiyat aralığını hemen görün, detaylı teklifi 2 saat içinde gönderelim.</p>
+      <div class="row">
+        <label>Nereden<input name="from" placeholder="İl / ilçe" required></label>
+        <label>Nereye<input name="to" placeholder="İl / ilçe" required></label>
+      </div>
+      <label>Hizmet
+        <select name="service" id="q-service">
+          <option value="ev" data-base="8500" data-km="26">Evden eve nakliyat</option>
+          <option value="parsiyel" data-base="1250" data-km="9">Parsiyel gönderi</option>
+          <option value="komple" data-base="6500" data-km="34">Komple yük</option>
+          <option value="ofis" data-base="14000" data-km="30">Ofis / fabrika taşıma</option>
+          <option value="depo" data-base="480" data-km="0">Depolama</option>
+        </select>
+      </label>
+      <div class="row">
+        <label>Yaklaşık mesafe (km)<input type="number" name="km" id="q-km" min="0" max="4000" value="450"></label>
+        <label>Hacim<select name="size" id="q-size">
+          <option value="1" data-mul="0.7">Küçük (1+1 / 1-3 palet)</option>
+          <option value="2" data-mul="1" selected>Orta (2+1 / 4-8 palet)</option>
+          <option value="3" data-mul="1.45">Büyük (3+1 ve üzeri)</option>
+        </select></label>
+      </div>
+      <output class="quote-out" id="q-out" aria-live="polite"></output>
+      <button class="btn btn-a btn-block" type="submit">Detaylı teklif formuna geç</button>
+      <small class="quote-note">Gösterilen aralık bilgilendirme amaçlıdır; kesin fiyat ekspertiz sonrası yazılı verilir.</small>
+    </form>
+  </div>
+
+  <div class="wrap">
+    <div class="stats reveal">
+      {{ range $d.Stats }}
+      <div class="stat"><b data-count="{{ .Value }}">0</b><span class="suf">{{ .Suffix }}</span><small>{{ .Label }}</small></div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-in">
+    {{ range $d.Cities }}<span>{{ . }}</span><i>•</i>{{ end }}
+    {{ range $d.Cities }}<span>{{ . }}</span><i>•</i>{{ end }}
+  </div>
+</div>
+
+<section class="sec">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="kicker"><i></i>Neden Yükrota</span>
+      <h2>Nakliyatta sürprizi sevmiyoruz</h2>
+      <p>Sektörün en çok şikâyet edilen dört konusunu baştan çözerek işe başladık.</p>
+    </header>
+    <div class="grid-4">
+      {{ range $d.Values }}
+      <article class="vcard reveal">
+        <span class="vicon"><svg viewBox="0 0 24 24"><use href="#i-{{ .Icon }}"></use></svg></span>
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Text }}</p>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-alt">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="kicker"><i></i>Hizmetler</span>
+      <h2>Ne taşıyacaksanız bir hattımız var</h2>
+      <p>Altı ana hizmet, tek operasyon merkezi. Hepsi aynı takip sistemi ve aynı sigorta kapsamında.</p>
+    </header>
+    <div class="grid-3">
+      {{ range $d.Services }}
+      <a class="scard reveal" href="/hizmetler/{{ .Slug }}/">
+        <span class="sicon"><svg viewBox="0 0 24 24"><use href="#i-{{ .Icon }}"></use></svg></span>
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Short }}</p>
+        <span class="more">Detaylar <svg viewBox="0 0 24 24"><use href="#i-arrow"></use></svg></span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap steps-wrap">
+    <header class="sec-head sec-head-l reveal">
+      <span class="kicker"><i></i>Süreç</span>
+      <h2>İlk telefondan yerleşime beş adım</h2>
+      <p>Her adımda ne olacağını önceden bilirsiniz. Operasyon sorumlunuz baştan sona aynı kişidir.</p>
+      <a class="btn btn-a" href="/iletisim/">Süreci başlatın</a>
+    </header>
+    <ol class="steps">
+      {{ range $d.Steps }}
+      <li class="reveal"><b>{{ .No }}</b><div><h3>{{ .Title }}</h3><p>{{ .Text }}</p></div></li>
+      {{ end }}
+    </ol>
+  </div>
+</section>
+
+<section class="sec sec-dark">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="kicker"><i></i>Sefer tarifesi</span>
+      <h2>Düzenli hatlarımız</h2>
+      <p>Aşağıdaki hatlarda sabit günlerde çıkış yapıyoruz; listede olmayan güzergâhlar için de araç planlıyoruz.</p>
+    </header>
+    <div class="board reveal">
+      {{ range $d.Routes }}
+      <div class="board-row">
+        <span class="from">{{ .From }}</span>
+        <span class="line" aria-hidden="true"><i></i></span>
+        <span class="to">{{ .To }}</span>
+        <span class="days">{{ .Days }}</span>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="kicker"><i></i>Referanslar</span>
+      <h2>Müşterilerimiz ne diyor?</h2>
+    </header>
+    <div class="grid-3">
+      {{ range $d.Testimonials }}
+      <figure class="tcard reveal">
+        <div class="stars" aria-label="5 üzerinden 5">
+          <svg viewBox="0 0 24 24"><use href="#i-star"></use></svg><svg viewBox="0 0 24 24"><use href="#i-star"></use></svg><svg viewBox="0 0 24 24"><use href="#i-star"></use></svg><svg viewBox="0 0 24 24"><use href="#i-star"></use></svg><svg viewBox="0 0 24 24"><use href="#i-star"></use></svg>
+        </div>
+        <blockquote>{{ .Text }}</blockquote>
+        <figcaption><span class="ava">{{ .Initial }}</span><b>{{ .Author }}</b><small>{{ .Role }}</small></figcaption>
+      </figure>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-alt">
+  <div class="wrap faq-wrap">
+    <header class="sec-head sec-head-l reveal">
+      <span class="kicker"><i></i>S.S.S.</span>
+      <h2>En çok sorulanlar</h2>
+      <p>Aradığınız cevap burada yoksa tüm soruları görebilir ya da doğrudan arayabilirsiniz.</p>
+      <a class="btn btn-line" href="/sss/">Tüm sorular</a>
+    </header>
+    <div class="faq reveal">
+      {{ range $i, $f := $d.Faqs }}
+      <details{{ if eq $i 0 }} open{{ end }}>
+        <summary>{{ $f.Q }}<span class="chev" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>{{ $f.A }}</p></div>
+      </details>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ template "cta" . }}
+{{ end }}

@@ -1,0 +1,57 @@
+{{ define "main" }}
+{{ template "pagehead" . }}
+{{ $d := .Data }}
+
+<section class="sec">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="kicker"><i></i>Araç tipleri</span>
+      <h2>Yüke göre araç, işe göre ekip</h2>
+      <p>Yanlış araç, hasarın en yaygın sebebi. Ekspertizde yükünüzü ölçer, doğru aracı planlarız.</p>
+    </header>
+    <div class="table-wrap reveal">
+      <table class="tbl">
+        <thead><tr><th>Araç</th><th>Kapasite</th><th>Hacim</th><th>Kullanım alanı</th><th>Filodaki adet</th></tr></thead>
+        <tbody>
+          {{ range $d.Fleet }}
+          <tr><td data-l="Araç"><b>{{ .Name }}</b></td><td data-l="Kapasite">{{ .Capacity }}</td><td data-l="Hacim">{{ .Volume }}</td><td data-l="Kullanım">{{ .Use }}</td><td data-l="Adet"><span class="badge">{{ .Count }}</span></td></tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-dark">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="kicker"><i></i>Sefer tarifesi</span>
+      <h2>Düzenli hatlar</h2>
+      <p>Sabit günlerde çıkış yaptığımız hatlar. Diğer güzergâhlarda talep bazlı araç planlıyoruz.</p>
+    </header>
+    <div class="board reveal">
+      {{ range $d.Routes }}
+      <div class="board-row">
+        <span class="from">{{ .From }}</span>
+        <span class="line" aria-hidden="true"><i></i></span>
+        <span class="to">{{ .To }}</span>
+        <span class="days">{{ .Days }}</span>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="kicker"><i></i>Teslimat ağı</span>
+      <h2>81 ilde teslimat, 14 ilde kendi şubemiz</h2>
+      <p>Şube olmayan illerde anlaşmalı depo ve sabit ekiplerle çalışıyoruz; sorumluluk yine bizde kalır.</p>
+    </header>
+    <div class="chips reveal">{{ range $d.Cities }}<span class="chip">{{ . }}</span>{{ end }}<span class="chip chip-a">+ 65 il</span></div>
+  </div>
+</section>
+
+{{ template "cta" . }}
+{{ end }}

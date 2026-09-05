@@ -1,0 +1,61 @@
+{{ define "main" }}
+{{ template "pagehead" . }}
+{{ $d := .Data }}
+
+<section class="sec">
+  <div class="wrap">
+    <div class="stats stats-light reveal">
+      {{ range $d.Stats }}
+      <div class="stat"><b data-count="{{ .Value }}">0</b><span class="suf">{{ .Suffix }}</span><small>{{ .Label }}</small></div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap two-col">
+    <article class="prose reveal">
+      <h2>Bir kamyonet, iki kişi ve tek bir kural</h2>
+      <p>Yükrota, 2009'da İstanbul Avcılar'da tek bir kamyonetle kuruldu. İlk günden beri değişmeyen tek kuralımız var: verdiğimiz fiyat, taşıma bittiğinde de aynı fiyattır.</p>
+      <p>Sektörde en sık yaşanan sorunun taşımanın kendisi değil, iletişim ve fiyat belirsizliği olduğunu gördük. Bu yüzden önce ekspertiz ve yazılı teklif sürecini standartlaştırdık, ardından takip altyapısını kendi ekibimizle kurduk.</p>
+      <p>Bugün 124 araçlık öz filomuz, 310 kişilik kadromuz ve 14.000 m² depo alanımızla evden eve taşımadan fabrika nakillerine kadar geniş bir alanda çalışıyoruz. Sahadaki her ekip, taşeron değil kendi personelimizdir.</p>
+      <h3>Belgeler ve sigorta</h3>
+      <p>U-NET K1 yetki belgesi, uluslararası taşımalar için C2 belgesi ve tüm yükler için CMR / nakliyat emtia sigortası kapsamındayız. Poliçe bilgileri her teklifte paylaşılır.</p>
+    </article>
+    <aside class="side reveal">
+      <div class="side-card side-card-2">
+        <h3>Kısaca</h3>
+        <dl class="facts">
+          <dt>Kuruluş</dt><dd>2009, İstanbul</dd>
+          <dt>Merkez</dt><dd>Avcılar / İstanbul</dd>
+          <dt>Şube</dt><dd>14 il</dd>
+          <dt>Filo</dt><dd>124 araç (öz mülk)</dd>
+          <dt>Depo</dt><dd>14.000 m² kapalı alan</dd>
+          <dt>Kadro</dt><dd>310 kişi</dd>
+          <dt>Yetki belgesi</dt><dd>K1 · C2</dd>
+        </dl>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="sec sec-alt">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="kicker"><i></i>İlkelerimiz</span>
+      <h2>Söz verdiğimiz dört şey</h2>
+    </header>
+    <div class="grid-4">
+      {{ range $d.Values }}
+      <article class="vcard reveal">
+        <span class="vicon"><svg viewBox="0 0 24 24"><use href="#i-{{ .Icon }}"></use></svg></span>
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Text }}</p>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ template "cta" . }}
+{{ end }}
