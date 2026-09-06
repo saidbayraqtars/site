@@ -34,6 +34,12 @@
 - Google Fonts harici yüklenir; tamamen çevrimdışı/hızlı istenirse font dosyaları
   self-host edilmeli.
 
+## Yayın
+
+Vercel projesi `yukrota-lojistik`, bu depoya bağlıdır. Kök dizin
+`projeler/yukrota-lojistik`, çıktı `dist/` (build adımı yok — `vercel.json`).
+Dala her push'ta önizleme dağıtımı üretilir; `main`'e merge edildiğinde canlıya çıkar.
+
 ## Sonraki adımlar
 
 1. Müşteriden gerçek bilgileri al (unvan, telefon, adres, yetki belgeleri, gerçek
