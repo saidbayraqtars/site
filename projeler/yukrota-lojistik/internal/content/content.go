@@ -99,7 +99,7 @@ func Company() Site {
 		BaseURL:   "https://yukrota.com.tr",
 		Phone:     "0850 000 45 45",
 		PhoneHref: "+908500004545",
-		Whatsapp:  "+905000004545",
+		Whatsapp:  "905000004545",
 		Email:     "merkez@yukrota.com.tr",
 		Address:   "Ambarlı Mah. Lojistik Cad. No: 42, Avcılar / İstanbul",
 		Hours:     "Hafta içi 08:00 – 20:00 · Cumartesi 09:00 – 17:00",

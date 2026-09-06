@@ -32,6 +32,7 @@ type Ctx struct {
 	Title   string // <title> içeriği (site adı otomatik eklenir)
 	Desc    string
 	Path    string // "/hizmetler/" gibi, aktif menü işaretlemesi için
+	URL     string // sayfanın kendi adresi (canonical / og:url)
 	Heading string // sayfa başlığındaki büyük başlık
 	Kicker  string
 	Sub     string
@@ -223,6 +224,7 @@ func build(out string) (int, error) {
 			return 0, fmt.Errorf("%s: %w", p.tpl, err)
 		}
 
+		p.ctx.URL = p.path
 		dst := filepath.Join(out, filepath.FromSlash(strings.Trim(p.path, "/")), "index.html")
 		if err := os.MkdirAll(filepath.Dir(dst), 0o755); err != nil {
 			return 0, err
